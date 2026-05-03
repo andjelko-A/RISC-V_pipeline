@@ -39,6 +39,7 @@ entity hazard_unit is
     rs1_in_use_i: in std_logic;
     rs2_in_use_i: in std_logic;
     branch_id_i: in std_logic;
+    jump_id_i: in std_logic;
     rd_address_ex_i : in std_logic_vector(4 downto 0);
     mem_to_reg_ex_i : in std_logic;
     rd_we_ex_i: in std_logic;
@@ -58,5 +59,45 @@ architecture Behavioral of hazard_unit is
 
 begin
 
+   hazard_check: process(rs1_address_id_i, rs2_address_id_i, rs1_in_use_i, rs2_in_use_i,
+                branch_id_i, rd_address_ex_i, mem_to_reg_ex_i, rd_we_ex_i, rd_address_mem_i,
+                mem_to_reg_mem_i)
+                begin
+                
+                    pc_en_o <= '1';
+                    if_id_en_o <= '1';
+                    control_pass_o <= '1';
+                
+                    if branch_id_i = '0' and jump_id_i = '0' then
+                    
+                        if (((rs1_address_id_i = rd_address_ex_i and rs1_in_use_i = '1') or
+                           (rs2_address_id_i = rd_address_ex_i and rs2_in_use_i = '1')) and
+                           (mem_to_reg_ex_i = '1' and rd_we_ex_i = '1')) then
+                           
+                            pc_en_o <= '0';
+                            if_id_en_o <= '0';
+                            control_pass_o <= '0';
+                           
+                        end if;
+                    else
+                        
+                        if ((rs1_address_id_i = rd_address_ex_i or rs2_address_id_i = rd_address_ex_i) and
+                             rd_we_ex_i = '1') then
+                             
+                            pc_en_o <= '0';
+                            if_id_en_o <= '0';
+                            control_pass_o <= '0';
+                            
+                        elsif ((rs1_address_id_i = rd_address_mem_i or rs2_address_id_i = rd_address_mem_i) and
+                             mem_to_reg_mem_i = '1') then
+                             
+                            pc_en_o <= '0';
+                            if_id_en_o <= '0';
+                            control_pass_o <= '0';
+                             
+                        end if;
+                    end if;
+                
+                end process; 
 
 end Behavioral;

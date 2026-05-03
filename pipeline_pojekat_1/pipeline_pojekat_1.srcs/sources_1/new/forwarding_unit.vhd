@@ -57,5 +57,40 @@ architecture Behavioral of forwarding_unit is
 
 begin
 
+    fwd_check: process(rs1_address_id_i, rs2_address_id_i,rs1_address_ex_i, rs2_address_ex_i,
+                rd_we_mem_i, rd_address_mem_i, rd_we_wb_i, rd_address_wb_i)
+    begin
+    
+        alu_forward_a_o <= "00";
+        alu_forward_b_o <= "00";
+        branch_forward_a_o <= '0';
+        branch_forward_b_o <= '0';
+    
+        if unsigned(rd_address_wb_i) /= 0 and rd_we_wb_i = '1' then
+        
+            if rs1_address_id_i = rd_address_wb_i then
+                alu_forward_a_o <= "01";
+            end if;
+            if rs2_address_id_i = rd_address_wb_i then
+                alu_forward_b_o <= "01";
+            end if;
+        
+        end if;
+        
+        if unsigned(rd_address_mem_i) /= 0 and rd_we_mem_i = '1' then
+        
+            if rs1_address_id_i = rd_address_mem_i then
+                alu_forward_a_o <= "01";
+                branch_forward_a_o <= '1';
+            end if;
+            if rs2_address_id_i = rd_address_mem_i then
+                alu_forward_b_o <= "01";
+                branch_forward_b_o <= '1';
+            end if;
+        
+        end if;
+    
+    end process;
+    
 
 end Behavioral;

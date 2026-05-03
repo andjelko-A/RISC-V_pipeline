@@ -47,14 +47,15 @@ entity data_path is
     data_mem_read_i: in std_logic_vector (31 downto 0);
     -- kontrolni signali
     mem_to_reg_i: in std_logic;
-    alu_2bit_op: in std_logic_vector (1 downto 0); -- promenio sam sa 4 alu_op_i
-    alu_src_b_i: in std_logic;                     -- sto je izlaz alu decodera kog sam izbacio
-    pc_next_sel_i: in std_logic;                   -- na alu_2bit_op
+    alu_2bit_op: in std_logic_vector(1 downto 0); -- promenio sam sa 4 alu_op_i
+    alu_src_b_i: in std_logic;                     -- sto je izlaz alu decodera kog sam izbacio                                               
+    uc_jmp_i: in std_logic;
+    pc_next_sel_i: in std_logic_vector(1 downto 0);                   
     rd_we_i: in std_logic;
     branch_condition_o : out std_logic;
     -- kontrolni signali za prosledjivanje operanada u ranije faze protocne obrade
-    alu_forward_a_i: in std_logic_vector (1 downto 0);
-    alu_forward_b_i: in std_logic_vector (1 downto 0);
+    alu_forward_a_i: in std_logic_vector(1 downto 0);
+    alu_forward_b_i: in std_logic_vector(1 downto 0);
     branch_forward_a_i : in std_logic;
     branch_forward_b_i : in std_logic;
     -- kontrolni signal za resetovanje if/id registra
@@ -73,17 +74,19 @@ architecture structural of data_path is
     signal pc_curr_id_s: std_logic_vector(31 downto 0);
     signal instruction_id_s: std_logic_vector(31 downto 0);
     signal branch_address_id_s: std_logic_vector(31 downto 0);
-    
+    signal jmp_address_id_s: std_logic_vector(31 downto 0);
     signal imm_id_s: std_logic_vector(31 downto 0);
     signal rs1_id_s: std_logic_vector(31 downto 0);
     signal rs2_id_s: std_logic_vector(31 downto 0);
     signal rs1_adr_id_s: std_logic_vector(4 downto 0);
     signal rs2_adr_id_s: std_logic_vector(4 downto 0);
     
+    signal pc_curr_ex_s: std_logic_vector(31 downto 0);
     signal imm_ex_s: std_logic_vector(31 downto 0);
     signal rs1_ex_s: std_logic_vector(31 downto 0);
     signal rs2_ex_s: std_logic_vector(31 downto 0);
     signal rd_adr_ex_s: std_logic_vector(4 downto 0);
+    signal alu_res_ex_o: std_logic_vector(31 downto 0);
     signal alu_res_ex_s: std_logic_vector(31 downto 0);
     
     signal alu_res_mem_s: std_logic_vector(31 downto 0);
@@ -98,8 +101,9 @@ architecture structural of data_path is
 begin
 
     -- IF deo
-    pc_next_if_s <= std_logic_vector(signed(pc_curr_if_s) + 4) when pc_next_sel_i = '0' else
-                    branch_address_id_s;
+    pc_next_if_s <= std_logic_vector(signed(pc_curr_if_s) + 4) when pc_next_sel_i = "00" else
+                    branch_address_id_s when pc_next_sel_i = "01" else
+                    jmp_address_id_s;
     instr_mem_address_o <= pc_curr_if_s;
     instruction_if_s <= instr_mem_read_i;   
     
@@ -123,6 +127,8 @@ begin
     instruction_o <= instruction_id_s;  
     rs1_adr_id_s <= instruction_id_s(19 downto 15);
     rs2_adr_id_s <= instruction_id_s(24 downto 20);
+    jmp_address_id_s <= std_logic_vector(unsigned(imm_id_s) + unsigned(rs1_id_s)) when branch_forward_a_i = '0' else
+                        std_logic_vector(unsigned(imm_id_s) + unsigned(alu_res_mem_s));
     
     reg_bank_1: entity work.register_bank
         port map(
@@ -158,6 +164,9 @@ begin
                 
     -- EX deo
     
+    alu_res_ex_s <= alu_res_ex_o when uc_jmp_i = '0' else
+                    std_logic_vector(signed(pc_curr_ex_s) + 4);
+    
     alu_1: entity work.alu
         port map(
                 alu_forward_a_i => alu_forward_a_i,
@@ -171,7 +180,7 @@ begin
                 alu_rs1_wb_i => rd_wb_s,
                 alu_rs2_wb_i => rd_wb_s,
                 alu_imm_ex_i => imm_ex_s,
-                alu_result_o => alu_res_ex_s
+                alu_result_o => alu_res_ex_o
                 );
 
     -- MEM deo
@@ -199,6 +208,7 @@ begin
             imm_ex_s <= imm_id_s;
             rs1_ex_s <= rs1_id_s;
             rs2_ex_s <= rs2_id_s;
+            pc_curr_ex_s <= pc_curr_id_s;
             rd_adr_ex_s <= instruction_id_s(11 downto 7);
             
             alu_res_mem_s <= alu_res_ex_s;
