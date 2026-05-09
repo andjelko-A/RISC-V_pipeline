@@ -67,8 +67,8 @@ end entity;
 
 architecture structural of data_path is
 
-    signal pc_next_if_s: std_logic_vector(31 downto 0);
-    signal pc_curr_if_s: std_logic_vector(31 downto 0);
+    signal pc_next_if_s: std_logic_vector(31 downto 0) := (others => '0');
+    signal pc_curr_if_s: std_logic_vector(31 downto 0) := std_logic_vector(to_signed(-4, 32));
     signal instruction_if_s: std_logic_vector(31 downto 0);
     
     signal pc_curr_id_s: std_logic_vector(31 downto 0);
@@ -101,9 +101,7 @@ architecture structural of data_path is
 begin
 
     -- IF deo
-    pc_next_if_s <= std_logic_vector(signed(pc_curr_if_s) + 4) when pc_next_sel_i = "00" else
-                    branch_address_id_s when pc_next_sel_i = "01" else
-                    jmp_address_id_s;
+    
     instr_mem_address_o <= pc_curr_if_s;
     instruction_if_s <= instr_mem_read_i;   
     
@@ -114,7 +112,13 @@ begin
             
             if pc_en_i = '1' then
             
-                pc_curr_if_s <= pc_next_if_s;
+                if pc_next_sel_i = "00" then
+                    pc_curr_if_s <= std_logic_vector(signed(pc_curr_if_s) + 4);
+                elsif pc_next_sel_i = "01" then
+                    pc_curr_if_s <= branch_address_id_s;
+                else
+                    pc_curr_if_s <= jmp_address_id_s;
+                end if;
             
             end if;
             

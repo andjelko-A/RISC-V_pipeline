@@ -59,11 +59,12 @@ architecture Behavioral of immediate is
 
 begin
 
-    imm_gen: process(inst_code_i)
+    extension_s <= (others => inst_code_i(WIDTH-1));
+    
+    imm_gen: process(inst_code_i, extension_s)
     begin
         
         immediate_o <= (others => '0');
-        extension_s <= (others => inst_code_i(WIDTH-1));
         
         case inst_code_i(6 downto 2) is
         
@@ -80,6 +81,7 @@ begin
             when others =>
                 -- Ovde preostali R-format
                 immediate_o <= (others => '0');
+                
         end case;
         
     end process;

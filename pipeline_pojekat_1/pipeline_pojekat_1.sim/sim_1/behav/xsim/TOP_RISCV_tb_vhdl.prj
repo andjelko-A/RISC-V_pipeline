@@ -1,0 +1,18 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../../proj1/RISCV_tb/BRAM_byte_addressable.vhd" \
+"../../../../pipeline_pojekat_1.srcs/sources_1/new/register_bank.vhd" \
+"../../../../pipeline_pojekat_1.srcs/sources_1/new/branch_unit.vhd" \
+"../../../../pipeline_pojekat_1.srcs/sources_1/new/immediate.vhd" \
+"../../../../pipeline_pojekat_1.srcs/sources_1/new/alu.vhd" \
+"../../../../pipeline_pojekat_1.srcs/sources_1/new/data_path.vhd" \
+"../../../../pipeline_pojekat_1.srcs/sources_1/new/ctrl_decoder.vhd" \
+"../../../../pipeline_pojekat_1.srcs/sources_1/new/forwarding_unit.vhd" \
+"../../../../pipeline_pojekat_1.srcs/sources_1/new/hazard_unit.vhd" \
+"../../../../pipeline_pojekat_1.srcs/sources_1/new/control_path.vhd" \
+"../../../../../../proj1/TOP_RISCV.vhd" \
+"../../../../../../proj1/package/txt_util.vhd" \
+"../../../../../../proj1/RISCV_tb/TOP_RISCV_tb.vhd" \
+
+# Do not sort compile order
+nosort

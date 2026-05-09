@@ -57,29 +57,17 @@ architecture Behavioral of register_bank is
 
 begin
 
+    rs1_data_o <= (others => '0') when unsigned(rs1_address_i) = 0 else
+                  reg_bank_s(to_integer(unsigned(rs1_address_i)));
+    rs2_data_o <= (others => '0') when unsigned(rs2_address_i) = 0 else
+                  reg_bank_s(to_integer(unsigned(rs2_address_i)));
+
     bank_op: process(clk)
     begin
-    
-        if rising_edge(clk) then
-            
-            if reset = '1' then
-            
-                reg_bank_s <= (others => (others => '0'));
-            
-            else
-            
-                rs1_data_o <= reg_bank_s(to_integer(unsigned(rs1_address_i)));
-                rs2_data_o <= reg_bank_s(to_integer(unsigned(rs2_address_i)));
-                
-            end if;
-            
-        end if;
         
         if falling_edge(clk) then
-            if rd_we_i = '1' then
-                
+            if rd_we_i = '1' and unsigned(rd_address_i) /= 0 then
                 reg_bank_s(to_integer(unsigned(rd_address_i))) <= rd_data_i;
-                
             end if;
         end if;
     

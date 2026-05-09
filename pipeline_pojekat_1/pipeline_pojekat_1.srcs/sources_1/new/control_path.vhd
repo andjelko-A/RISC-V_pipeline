@@ -66,7 +66,7 @@ architecture structural of control_path is
     signal rs1_in_use_id_s: std_logic;
     signal rs2_in_use_id_s: std_logic;
     signal control_pass_id_s: std_logic;
-    signal pc_next_sel_id_s: std_logic_vector(1 downto 0);
+    signal pc_next_sel_id_s: std_logic_vector(1 downto 0) := (others => '0');
     signal rd_address_id_s: std_logic_vector(4 downto 0);
     signal rs1_address_id_s: std_logic_vector(4 downto 0);
     signal rs2_address_id_s: std_logic_vector(4 downto 0);
@@ -178,6 +178,8 @@ begin
                 mem_to_reg_ex_s <= mem_to_reg_id_s;
                 data_mem_we_ex_s <= data_mem_we_ex_s;
                 rd_we_ex_s <= rd_we_id_s;
+                rs1_address_ex_s <= rs1_address_id_s;
+                rs2_address_ex_s <= rs2_address_id_s;
                 alu_src_b_ex_s <= alu_src_b_id_s;
                 uc_jump_ex_s <= uc_jump_id_s;
                 alu_2bit_op_ex_s <= alu_2bit_op_id_s;

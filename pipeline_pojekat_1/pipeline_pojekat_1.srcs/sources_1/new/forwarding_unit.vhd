@@ -68,10 +68,10 @@ begin
     
         if unsigned(rd_address_wb_i) /= 0 and rd_we_wb_i = '1' then
         
-            if rs1_address_id_i = rd_address_wb_i then
+            if rs1_address_ex_i = rd_address_wb_i then
                 alu_forward_a_o <= "01";
             end if;
-            if rs2_address_id_i = rd_address_wb_i then
+            if rs2_address_ex_i = rd_address_wb_i then
                 alu_forward_b_o <= "01";
             end if;
         
@@ -79,12 +79,12 @@ begin
         
         if unsigned(rd_address_mem_i) /= 0 and rd_we_mem_i = '1' then
         
-            if rs1_address_id_i = rd_address_mem_i then
-                alu_forward_a_o <= "01";
+            if rs1_address_ex_i = rd_address_mem_i then
+                alu_forward_a_o <= "10";
                 branch_forward_a_o <= '1';
             end if;
-            if rs2_address_id_i = rd_address_mem_i then
-                alu_forward_b_o <= "01";
+            if rs2_address_ex_i = rd_address_mem_i then
+                alu_forward_b_o <= "10";
                 branch_forward_b_o <= '1';
             end if;
         

@@ -74,18 +74,18 @@ begin
         if alu_forward_a_i = "00" then
             alu_a_s <= alu_rs1_ex_i;
         elsif alu_forward_a_i = "01" then
-            alu_a_s <= alu_rs1_mem_i;
-        elsif alu_forward_a_i = "10" then
             alu_a_s <= alu_rs1_wb_i;
+        elsif alu_forward_a_i = "10" then
+            alu_a_s <= alu_rs1_mem_i;
         end if;
     
         if alu_src_b_ex_i = '0' then
             if alu_forward_b_i = "00" then
                 alu_b_s <= alu_rs2_ex_i;
             elsif alu_forward_b_i = "01" then
-                alu_b_s <= alu_rs2_mem_i;
-            elsif alu_forward_b_i = "10" then
                 alu_b_s <= alu_rs2_wb_i;
+            elsif alu_forward_b_i = "10" then
+                alu_b_s <= alu_rs2_mem_i;
             end if;
         else
             alu_b_s <= alu_imm_ex_i;

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TOP_RISCV_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TOP_RISCV_tb" />
+            <top_module name="txt_util" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,782.001 ns"></ZoomEndTime>
+      <Cursor1Time time="0.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="276"></NameColumnWidth>
+      <ValueColumnWidth column_width="116"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="23" />
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/reset">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/instr_mem_address_o">
+      <obj_property name="ElementShortName">instr_mem_address_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_mem_address_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/instr_mem_read_i">
+      <obj_property name="ElementShortName">instr_mem_read_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_mem_read_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/data_mem_address_o">
+      <obj_property name="ElementShortName">data_mem_address_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_mem_address_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/data_mem_read_i">
+      <obj_property name="ElementShortName">data_mem_read_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_mem_read_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/data_mem_write_o">
+      <obj_property name="ElementShortName">data_mem_write_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_mem_write_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/data_mem_we_o">
+      <obj_property name="ElementShortName">data_mem_we_o[3:0]</obj_property>
+      <obj_property name="ObjectShortName">data_mem_we_o[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/instruction_s">
+      <obj_property name="ElementShortName">instruction_s[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instruction_s[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/mem_to_reg_s">
+      <obj_property name="ElementShortName">mem_to_reg_s</obj_property>
+      <obj_property name="ObjectShortName">mem_to_reg_s</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/alu_2bit_op_s">
+      <obj_property name="ElementShortName">alu_2bit_op_s[1:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_2bit_op_s[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/alu_src_b_s">
+      <obj_property name="ElementShortName">alu_src_b_s</obj_property>
+      <obj_property name="ObjectShortName">alu_src_b_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/rd_we_s">
+      <obj_property name="ElementShortName">rd_we_s</obj_property>
+      <obj_property name="ObjectShortName">rd_we_s</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/pc_next_sel_s">
+      <obj_property name="ElementShortName">pc_next_sel_s[1:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_next_sel_s[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/uc_jmp_s">
+      <obj_property name="ElementShortName">uc_jmp_s</obj_property>
+      <obj_property name="ObjectShortName">uc_jmp_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/if_id_flush_s">
+      <obj_property name="ElementShortName">if_id_flush_s</obj_property>
+      <obj_property name="ObjectShortName">if_id_flush_s</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/alu_forward_a_s">
+      <obj_property name="ElementShortName">alu_forward_a_s[1:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_forward_a_s[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/alu_forward_b_s">
+      <obj_property name="ElementShortName">alu_forward_b_s[1:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_forward_b_s[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/branch_forward_a_s">
+      <obj_property name="ElementShortName">branch_forward_a_s</obj_property>
+      <obj_property name="ObjectShortName">branch_forward_a_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/branch_forward_b_s">
+      <obj_property name="ElementShortName">branch_forward_b_s</obj_property>
+      <obj_property name="ObjectShortName">branch_forward_b_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/branch_condition_s">
+      <obj_property name="ElementShortName">branch_condition_s</obj_property>
+      <obj_property name="ObjectShortName">branch_condition_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/pc_en_s">
+      <obj_property name="ElementShortName">pc_en_s</obj_property>
+      <obj_property name="ObjectShortName">pc_en_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/if_id_en_s">
+      <obj_property name="ElementShortName">if_id_en_s</obj_property>
+      <obj_property name="ObjectShortName">if_id_en_s</obj_property>
+   </wvobject>
+</wave_config>
