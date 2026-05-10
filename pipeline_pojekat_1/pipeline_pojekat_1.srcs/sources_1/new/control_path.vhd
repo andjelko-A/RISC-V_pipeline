@@ -153,7 +153,8 @@ begin
           
     -- IF control signali
     pc_next_sel_id_s <= uc_jump_id_s & (branch_condition_i and branch_id_s);
-    if_id_flush_o <= pc_next_sel_id_s(0);
+    if_id_flush_o <= '1' when uc_jump_id_s = '1' or pc_next_sel_id_s(0) = '1' else
+                     '0';
     pc_next_sel_o <= pc_next_sel_id_s;
     
     -- EX control signali
@@ -176,7 +177,7 @@ begin
         
             if control_pass_id_s = '1' then
                 mem_to_reg_ex_s <= mem_to_reg_id_s;
-                data_mem_we_ex_s <= data_mem_we_ex_s;
+                data_mem_we_ex_s <= data_mem_we_id_s;
                 rd_we_ex_s <= rd_we_id_s;
                 rs1_address_ex_s <= rs1_address_id_s;
                 rs2_address_ex_s <= rs2_address_id_s;
@@ -192,6 +193,8 @@ begin
                 uc_jump_ex_s <= '0';
                 alu_2bit_op_ex_s <= (others => '0');
                 rd_address_ex_s <= (others => '0');
+                rs1_address_ex_s <= (others => '0');
+                rs2_address_ex_s <= (others => '0');
             end if;
             
             mem_to_reg_mem_s <= mem_to_reg_ex_s;

@@ -107,7 +107,7 @@ begin
     
     inst_fetch: process(clk)
     begin
-    
+        
         if rising_edge(clk) then
             
             if pc_en_i = '1' then
@@ -197,12 +197,17 @@ begin
     rd_wb_s <= alu_res_wb_s when mem_to_reg_i = '0' else
                read_data_wb_s;
 
-    pipe_data_regs: process(clk, if_id_flush_i)
+    pipe_data_regs: process(clk)
     begin
     
         if rising_edge(clk) then
         
-            if if_id_en_i = '1' then
+            if if_id_flush_i = '1' then
+                
+                pc_curr_id_s <= (others => '0');
+                instruction_id_s <= (others => '0');
+                
+            elsif if_id_en_i = '1' then
                 
                 pc_curr_id_s <= pc_curr_if_s;
                 instruction_id_s <= instruction_if_s;
@@ -217,19 +222,18 @@ begin
             
             alu_res_mem_s <= alu_res_ex_s;
             rd_adr_mem_s <= rd_adr_ex_s;
-            data_mem_write_o <= rs2_ex_s;
+            if alu_forward_b_i = "00" then
+                data_mem_write_o <= rs2_ex_s;
+            elsif alu_forward_b_i = "01" then
+                data_mem_write_o <= alu_res_wb_s;
+            elsif alu_forward_b_i = "10" then
+                data_mem_write_o <= alu_res_mem_s;
+            end if;
             
             rd_adr_wb_s <= rd_adr_mem_s;
             alu_res_wb_s <= alu_res_mem_s;
             read_data_wb_s <= read_data_mem_s;
         
-        end if;
-        
-        if if_id_flush_i = '1' then
-            
-            pc_curr_id_s <= (others => '0');
-            instruction_id_s <= (others => '0');
-            
         end if;
     
     end process;

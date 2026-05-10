@@ -61,7 +61,7 @@ begin
 
    hazard_check: process(rs1_address_id_i, rs2_address_id_i, rs1_in_use_i, rs2_in_use_i,
                 branch_id_i, rd_address_ex_i, mem_to_reg_ex_i, rd_we_ex_i, rd_address_mem_i,
-                mem_to_reg_mem_i)
+                mem_to_reg_mem_i, jump_id_i)
                 begin
                 
                     pc_en_o <= '1';
@@ -72,7 +72,7 @@ begin
                     
                         if (((rs1_address_id_i = rd_address_ex_i and rs1_in_use_i = '1') or
                            (rs2_address_id_i = rd_address_ex_i and rs2_in_use_i = '1')) and
-                           (mem_to_reg_ex_i = '1' and rd_we_ex_i = '1')) then
+                           (mem_to_reg_ex_i = '1' and rd_we_ex_i = '1') and unsigned(rd_address_ex_i) /= 0) then
                            
                             pc_en_o <= '0';
                             if_id_en_o <= '0';
@@ -82,14 +82,14 @@ begin
                     else
                         
                         if ((rs1_address_id_i = rd_address_ex_i or rs2_address_id_i = rd_address_ex_i) and
-                             rd_we_ex_i = '1') then
+                             rd_we_ex_i = '1' and unsigned(rd_address_ex_i) /= 0) then
                              
                             pc_en_o <= '0';
                             if_id_en_o <= '0';
                             control_pass_o <= '0';
                             
                         elsif ((rs1_address_id_i = rd_address_mem_i or rs2_address_id_i = rd_address_mem_i) and
-                             mem_to_reg_mem_i = '1') then
+                             mem_to_reg_mem_i = '1' and unsigned(rd_address_mem_i) /= 0) then
                              
                             pc_en_o <= '0';
                             if_id_en_o <= '0';
