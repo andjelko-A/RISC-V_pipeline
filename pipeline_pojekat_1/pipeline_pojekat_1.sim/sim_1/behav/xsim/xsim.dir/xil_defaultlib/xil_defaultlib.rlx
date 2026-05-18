@@ -3,7 +3,7 @@
 Nov 14 2025
 12:36:23
 /home/andjelko/Desktop/AMS/RISC-V_pipeline/pipeline_pojekat_1/pipeline_pojekat_1.srcs/sources_1/new/alu.vhd,1778154946,vhdl,/home/andjelko/Desktop/AMS/RISC-V_pipeline/pipeline_pojekat_1/pipeline_pojekat_1.srcs/sources_1/new/data_path.vhd,,,alu,,,,,,,,
-/home/andjelko/Desktop/AMS/RISC-V_pipeline/pipeline_pojekat_1/pipeline_pojekat_1.srcs/sources_1/new/branch_unit.vhd,1777636980,vhdl,/home/andjelko/Desktop/AMS/RISC-V_pipeline/pipeline_pojekat_1/pipeline_pojekat_1.srcs/sources_1/new/data_path.vhd,,,branch_unit,,,,,,,,
+/home/andjelko/Desktop/AMS/RISC-V_pipeline/pipeline_pojekat_1/pipeline_pojekat_1.srcs/sources_1/new/branch_unit.vhd,1779061724,vhdl,/home/andjelko/Desktop/AMS/RISC-V_pipeline/pipeline_pojekat_1/pipeline_pojekat_1.srcs/sources_1/new/data_path.vhd,,,branch_unit,,,,,,,,
 /home/andjelko/Desktop/AMS/RISC-V_pipeline/pipeline_pojekat_1/pipeline_pojekat_1.srcs/sources_1/new/control_path.vhd,1778415791,vhdl,/home/andjelko/Desktop/AMS/proj1/TOP_RISCV.vhd,,,control_path,,,,,,,,
 /home/andjelko/Desktop/AMS/RISC-V_pipeline/pipeline_pojekat_1/pipeline_pojekat_1.srcs/sources_1/new/ctrl_decoder.vhd,1778399795,vhdl,/home/andjelko/Desktop/AMS/RISC-V_pipeline/pipeline_pojekat_1/pipeline_pojekat_1.srcs/sources_1/new/control_path.vhd,,,ctrl_decoder,,,,,,,,
 /home/andjelko/Desktop/AMS/RISC-V_pipeline/pipeline_pojekat_1/pipeline_pojekat_1.srcs/sources_1/new/data_path.vhd,1778415725,vhdl,/home/andjelko/Desktop/AMS/proj1/TOP_RISCV.vhd,,,data_path,,,,,,,,

@@ -64,7 +64,7 @@ begin
     comp_val_b_s <= rs2_id_i when branch_forward_b_i = '0' else
                     alu_res_mem_i;
                     
-    branch_condition_o <= '1' when comp_val_a_s = comp_val_b_s else
+    branch_condition_o <= '1' when comp_val_a_s < comp_val_b_s else
                           '0';
 
 end Behavioral;
