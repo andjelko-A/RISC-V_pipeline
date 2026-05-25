@@ -153,7 +153,7 @@ begin
           
     -- IF control signali
     pc_next_sel_id_s <= uc_jump_id_s & (branch_condition_i and branch_id_s);
-    if_id_flush_o <= '1' when uc_jump_id_s = '1' or pc_next_sel_id_s(0) = '1' else
+    if_id_flush_o <= '1' when ((uc_jump_id_s = '1' or pc_next_sel_id_s(0) = '1') and control_pass_id_s /= '0') else
                      '0';
     pc_next_sel_o <= pc_next_sel_id_s;
     

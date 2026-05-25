@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="658.450 ns"></ZoomStartTime>
-      <ZoomEndTime time="3,086.451 ns"></ZoomEndTime>
-      <Cursor1Time time="1,800.000 ns"></Cursor1Time>
+      <ZoomStartTime time="2,970.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="5,406.001 ns"></ZoomEndTime>
+      <Cursor1Time time="5,000.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="276"></NameColumnWidth>
-      <ValueColumnWidth column_width="104"></ValueColumnWidth>
+      <ValueColumnWidth column_width="100"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="47" />
+   <WVObjectSize size="49" />
    <wvobject type="logic" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/data_path_1/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -151,6 +151,14 @@
       <obj_property name="ObjectShortName">imm_id_s[31:0]</obj_property>
       <obj_property name="CustomSignalColor">#008000</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/data_path_1/branch_unit_1/comp_val_a_s">
+      <obj_property name="ElementShortName">comp_val_a_s[31:0]</obj_property>
+      <obj_property name="ObjectShortName">comp_val_a_s[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/data_path_1/branch_unit_1/comp_val_b_s">
+      <obj_property name="ElementShortName">comp_val_b_s[31:0]</obj_property>
+      <obj_property name="ObjectShortName">comp_val_b_s[31:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/data_path_1/rs1_id_s">
       <obj_property name="ElementShortName">rs1_id_s[31:0]</obj_property>

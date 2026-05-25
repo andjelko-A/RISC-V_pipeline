@@ -81,10 +81,14 @@ begin
         
             if rs1_address_ex_i = rd_address_mem_i then
                 alu_forward_a_o <= "10";
+            end if;
+            if rs1_address_id_i = rd_address_mem_i then
                 branch_forward_a_o <= '1';
             end if;
             if rs2_address_ex_i = rd_address_mem_i then
                 alu_forward_b_o <= "10";
+            end if;
+            if rs2_address_id_i = rd_address_mem_i then
                 branch_forward_b_o <= '1';
             end if;
         
