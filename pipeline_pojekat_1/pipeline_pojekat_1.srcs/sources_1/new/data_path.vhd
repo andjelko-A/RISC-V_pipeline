@@ -105,7 +105,7 @@ begin
     instr_mem_address_o <= pc_curr_if_s;
     instruction_if_s <= instr_mem_read_i;   
     
-    inst_fetch: process(clk)
+    inst_fetch: process(clk)   
     begin
         
         if rising_edge(clk) then
@@ -131,6 +131,7 @@ begin
     instruction_o <= instruction_id_s;  
     rs1_adr_id_s <= instruction_id_s(19 downto 15);
     rs2_adr_id_s <= instruction_id_s(24 downto 20);
+    -- logika za racunanje adrese bezuslovnog skoka
     jmp_address_id_s <= std_logic_vector(unsigned(imm_id_s) + unsigned(rs1_id_s)) when branch_forward_a_i = '0' else
                         std_logic_vector(unsigned(imm_id_s) + unsigned(alu_res_mem_s));
     
@@ -168,6 +169,7 @@ begin
                 
     -- EX deo
     
+    -- Ako se desi bezuslovni skok, prosledi kao rezultat ex faze povratnu adresu
     alu_res_ex_s <= alu_res_ex_o when uc_jmp_i = '0' else
                     std_logic_vector(signed(pc_curr_ex_s) + 4);
     
@@ -222,6 +224,9 @@ begin
             
             alu_res_mem_s <= alu_res_ex_s;
             rd_adr_mem_s <= rd_adr_ex_s;
+            -- na izlazu ex faze dodat jos jedan mux koji odlucuje da li je
+            -- potrebno vrsiti prosledljivanje u store instrukciji na ulaz
+            -- data mem
             if alu_forward_b_i = "00" then
                 data_mem_write_o <= rs2_ex_s;
             elsif alu_forward_b_i = "01" then

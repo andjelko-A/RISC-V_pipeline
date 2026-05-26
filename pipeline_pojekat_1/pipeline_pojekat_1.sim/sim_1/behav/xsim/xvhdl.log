@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/andjelko/Desktop/AMS/proj1/RISCV_tb/BRAM_byte_addressable.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'BRAM'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/andjelko/Desktop/AMS/proj1/RISCV_tb/TOP_RISCV_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'TOP_RISCV_tb'

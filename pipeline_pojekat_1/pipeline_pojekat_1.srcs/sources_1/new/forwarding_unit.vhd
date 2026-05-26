@@ -57,6 +57,7 @@ architecture Behavioral of forwarding_unit is
 
 begin
 
+    -- objedinjeno prosledljivanje za uslovni skok i alu
     fwd_check: process(rs1_address_id_i, rs2_address_id_i,rs1_address_ex_i, rs2_address_ex_i,
                 rd_we_mem_i, rd_address_mem_i, rd_we_wb_i, rd_address_wb_i)
     begin

@@ -59,6 +59,7 @@ architecture Behavioral of immediate is
 
 begin
 
+    -- znak za prosirenje konstante
     extension_s <= (others => inst_code_i(WIDTH-1));
     
     imm_gen: process(inst_code_i, extension_s)
@@ -66,6 +67,7 @@ begin
         
         immediate_o <= (others => '0');
         
+        -- nacin prosirenja u zavisnosti od tipa instrukcije
         case inst_code_i(6 downto 2) is
         
             when SLTI_opcode|JALR_opcode|LW_opcode =>

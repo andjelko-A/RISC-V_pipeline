@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2,970.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="5,406.001 ns"></ZoomEndTime>
-      <Cursor1Time time="5,000.000 ns"></Cursor1Time>
+      <ZoomStartTime time="897.100 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,719.101 ns"></ZoomEndTime>
+      <Cursor1Time time="2,289.100 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="276"></NameColumnWidth>
-      <ValueColumnWidth column_width="100"></ValueColumnWidth>
+      <ValueColumnWidth column_width="96"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="49" />
+   <WVObjectSize size="62" />
    <wvobject type="logic" fp_name="/TOP_RISCV_tb/TOP_RISCV_1/data_path_1/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -267,5 +267,57 @@
       <obj_property name="ObjectShortName">rd_wb_s[31:0]</obj_property>
       <obj_property name="CustomSignalColor">#FFFF00</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/data_mem/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/data_mem/en_a_i">
+      <obj_property name="ElementShortName">en_a_i</obj_property>
+      <obj_property name="ObjectShortName">en_a_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TOP_RISCV_tb/data_mem/en_b_i">
+      <obj_property name="ElementShortName">en_b_i</obj_property>
+      <obj_property name="ObjectShortName">en_b_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/data_mem/data_a_i">
+      <obj_property name="ElementShortName">data_a_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_a_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/data_mem/data_b_i">
+      <obj_property name="ElementShortName">data_b_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_b_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/data_mem/addr_a_i">
+      <obj_property name="ElementShortName">addr_a_i[9:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_a_i[9:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/data_mem/addr_b_i">
+      <obj_property name="ElementShortName">addr_b_i[9:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_b_i[9:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/data_mem/we_a_i">
+      <obj_property name="ElementShortName">we_a_i[3:0]</obj_property>
+      <obj_property name="ObjectShortName">we_a_i[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/data_mem/we_b_i">
+      <obj_property name="ElementShortName">we_b_i[3:0]</obj_property>
+      <obj_property name="ObjectShortName">we_b_i[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/data_mem/data_a_o">
+      <obj_property name="ElementShortName">data_a_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_a_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/data_mem/data_b_o">
+      <obj_property name="ElementShortName">data_b_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_b_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TOP_RISCV_tb/data_mem/ram_s">
+      <obj_property name="ElementShortName">ram_s[0:1023][7:0]</obj_property>
+      <obj_property name="ObjectShortName">ram_s[0:1023][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/TOP_RISCV_tb/data_mem/WADDR">
+      <obj_property name="ElementShortName">WADDR</obj_property>
+      <obj_property name="ObjectShortName">WADDR</obj_property>
    </wvobject>
 </wave_config>

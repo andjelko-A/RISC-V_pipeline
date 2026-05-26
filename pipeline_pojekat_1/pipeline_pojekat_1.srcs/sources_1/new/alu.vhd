@@ -63,6 +63,8 @@ architecture Behavioral of alu is
 
 begin
 
+    -- odluka o prosledljivanju, kao i prosedljivanju konstatne na ulaz
+    -- alu u slucaju stli
     alu_in_sel: process(alu_forward_a_i, alu_forward_b_i, alu_src_b_ex_i,
     alu_rs1_ex_i, alu_rs2_ex_i, alu_rs1_mem_i, alu_rs2_mem_i, alu_rs1_wb_i, alu_rs2_wb_i,
     alu_imm_ex_i)
@@ -93,6 +95,7 @@ begin
     
     end process;
 
+    -- odluka o izboru i izvrsavanje operacije
     alu_op_ex: process(alu_a_s, alu_b_s, alu_2_bit_op_ex_i)
     begin
 

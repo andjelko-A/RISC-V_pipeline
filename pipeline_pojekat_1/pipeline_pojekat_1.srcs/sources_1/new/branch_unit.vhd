@@ -56,9 +56,11 @@ architecture Behavioral of branch_unit is
     signal comp_val_b_s: std_logic_vector(WIDTH-1 downto 0);
 
 begin
-
+    
+    -- racunanje adrese uslovnog skoka
     branch_address_o <= std_logic_vector(signed(pc_id_i) + signed(immediate_i(WIDTH-2 downto 0) & '0'));
     
+    -- odredjivanje vrednosti za poredjenje, sa prolsedljivanjem
     comp_val_a_s <= rs1_id_i when branch_forward_a_i = '0' else
                     alu_res_mem_i;
     comp_val_b_s <= rs2_id_i when branch_forward_b_i = '0' else
